@@ -1,0 +1,24 @@
+name: mscintel
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.8
+  - pip
+  - numpy=1.24.3
+  - pandas=1.4.2
+  - scipy=1.5.3
+  - scikit-learn=0.24.2
+  - biopython=1.79
+  - matplotlib=3.4.3
+  - tqdm=4.66.5
+  - openpyxl=3.1.5
+  - pip:
+      - aaindex==1.1.2
+      - mlxtend==0.23.4
+      - shap==0.44.1
+      - xgboost==2.1.4
+      - lightgbm==4.6.0
+      - statsmodels==0.14.1
+      - scikit-posthocs==0.8.1

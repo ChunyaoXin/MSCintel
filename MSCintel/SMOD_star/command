@@ -1,0 +1,3 @@
+cd /home/xinchunyao/project/github_3/MSCintel/SMOD_star/
+
+nohup python run_full_pipeline.py --config config.yaml --allow-missing > logs/full_pipeline.log 2>&1 &

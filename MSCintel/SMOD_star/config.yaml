@@ -1,0 +1,49 @@
+# Base directory used to resolve all relative paths.
+repo_root: .
+
+# Input FASTA files.
+train_fasta: Data/train.fasta
+test_fasta: Data/test.fasta
+
+# Input directories for raw sequence files and external prediction results.
+raw_data_dir: Data
+raw_predicted_features_dir: predicted_features
+standardized_predicted_features_dir: predicted_features/standardized
+
+# Output directory for calculated feature files.
+feature_output_dir: outputs/features
+
+feature_selection:
+  # Calculated feature directories.
+  train_features_dir: outputs/features/train
+  test_features_dir: outputs/features/test
+
+  # AAindex metadata used during correlation-based redundancy removal.
+  feature_value_file: feature_selection/feature_value.txt
+
+  # Feature-selection and model-output directories.
+  correlative_results_dir: outputs/feature_selection/correlative_results
+  significant_results_dir: outputs/feature_selection/significant_results
+  wrapper_features_dir: outputs/feature_selection/wrapper_features
+  stacking_output_dir: outputs/feature_selection/stacking_model
+  model_metrics_file: outputs/feature_selection/model_metrics.csv
+
+  # Whether to save outputs generated at each stage.
+  save_outputs:
+    merge_select_correlative_features: true
+    merge_select_significant_features: true
+    correlative_significant_features: true
+    wrapper_feature_selection: true
+    stacking_merge_model: true
+
+  # Statistical screening parameters.
+  p_value_threshold: 0.05
+  alpha: 0.05
+  pcc: 0.7
+
+  # Resampling and model-training parameters.
+  outer_iterations: 10
+  inter_iterations: 100
+  repeat_times: 0.7
+  cv_splits: 5
+  random_state: 42
