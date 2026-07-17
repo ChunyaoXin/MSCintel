@@ -2,7 +2,7 @@
 
 This directory contains the complete SMOD_star workflow for feature calculation, feature selection, and Stacking model construction. Starting from training and test FASTA files and their corresponding external prediction results, the pipeline calculates sequence-derived features, identifies features associated with mechanosensitive ion channel function, trains the Stacking model, and reports the selected feature set and model performance. The workflow automatically executes feature calculation followed by feature selection and Stacking model construction.
 
-Before running this workflow, create and activate the conda environment as described in the repository-level [`README.md`](../README.md).
+Before running this workflow, create and activate the conda environment as described in the repository-level [`README.md`](../../README.md).
 
 ## 1. Configuration
 
