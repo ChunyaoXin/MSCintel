@@ -11,8 +11,8 @@ This repository provides two primary workflows:
 
 | Module        | Purpose                                                                                                                                         | Documentation                                  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `SMOD_star/`  | Calculate sequence-derived features, perform feature selection, train the Stacking model, and evaluate model performance.                       | [`SMOD_star/README.md`](SMOD_star/README.md)   |
-| `prediction/` | Apply the trained prediction models to new protein sequences. This module includes SMOD_star and ESM2-LR as two complementary prediction tools. | [`prediction/README.md`](prediction/README.md) |
+| `SMOD_star/`  | Calculate sequence-derived features, perform feature selection, train the Stacking model, and evaluate model performance.                       | [`SMOD_star/README.md`](MSCintel/SMOD_star/README.md)   |
+| `prediction/` | Apply the trained prediction models to new protein sequences. This module includes SMOD_star and ESM2-LR as two complementary prediction tools. | [`prediction/README.md`](MSCintel/prediction/README.md) |
 
 SMOD_star is the interpretable prediction model implemented within the MSCintel framework. ESM2-LR is provided as a complementary tool for applications that prioritize classification accuracy over mechanistic interpretability.
 
