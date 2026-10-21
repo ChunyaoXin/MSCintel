@@ -24,3 +24,7 @@ Thumbs.db
 .venv/
 venv/
 env/
+
+# ESM2 embeddings
+/MSC_classification/ESM2-LR/Datasets/embeddings/
+/MSC_classification/ESM2-LR/example/embeddings/

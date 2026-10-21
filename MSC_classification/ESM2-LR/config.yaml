@@ -1,0 +1,53 @@
+# Base directory used to resolve all relative paths.
+repo_root: .
+
+# ============================================================
+# TRAIN
+# ============================================================
+train:
+
+  # ESM2 embedding generation
+  embedding:
+    train_fasta: Datasets/train.fasta
+    test_fasta: Datasets/test.fasta
+
+    # ESM2 model checkpoint. Set to null for automatic loading.
+    esm_model_path: null
+
+    # Existing or newly generated embedding directories.
+    train_embedding_dir: Datasets/embeddings/train
+    test_embedding_dir: Datasets/embeddings/test
+
+    # Whether to save newly generated embeddings.
+    save_embeddings: true
+
+  # LR model training and evaluation
+  model_training:
+
+    # Output directory for the trained model and evaluation results.
+    output_dir: outputs/train
+
+
+
+# ============================================================
+# PREDICT
+# ============================================================
+predict:
+
+  # ESM2 embedding generation
+  embedding:
+    input_fasta: example/input.fasta
+    
+    # ESM2 model checkpoint. Set to null for automatic loading.
+    esm_model_path: null
+    
+    # Existing embeddings (null = generate using ESM2).
+    embedding_dir: null
+
+    # Save newly generated token-level embeddings.
+    save_embeddings: true
+    embedding_output_dir: example/embeddings
+
+  # Model prediction
+  prediction:
+    output: outputs/predict/predictions.csv

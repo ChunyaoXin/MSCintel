@@ -1,0 +1,64 @@
+# Base directory used to resolve all relative paths.
+repo_root: .
+
+# ============================================================
+# TRAIN
+# ============================================================
+
+train:
+
+  # Feature calculation
+  feature_generation:
+    train_fasta: Datasets/train.fasta
+    test_fasta: Datasets/test.fasta
+    predicted_features_dir: Datasets/predicted_features
+    train_features_dir: outputs/train/features/train
+    test_features_dir: outputs/train/features/test
+
+  # Feature selection and model construction
+  feature_selection:
+
+    # Feature-selection and model-output directories.
+    correlative_results_dir: outputs/train/feature_selection/correlative_results
+    significant_results_dir: outputs/train/feature_selection/significant_results
+    wrapper_features_dir: outputs/train/feature_selection/wrapper_features
+    stacking_output_dir: outputs/train/feature_selection/stacking_model
+    model_metrics_file: outputs/train/feature_selection/model_metrics.csv
+
+    # Whether to save outputs generated at each stage.
+    save_outputs:
+      merge_select_correlative_features: true
+      merge_select_significant_features: true
+      correlative_significant_features: true
+      wrapper_feature_selection: true
+      stacking_merge_model: true
+
+    # Statistical screening parameters.
+    p_value_threshold: 0.05
+    alpha: 0.05
+    pcc: 0.7
+
+    # Resampling and model-training parameters.
+    outer_iterations: 10
+    inter_iterations: 100
+    repeat_times: 0.7
+    cv_splits: 5
+    random_state: 42
+
+# ============================================================
+# PREDICT
+# ============================================================
+
+predict:
+
+  # Feature calculation
+  feature_generation:
+    input_fasta: example/input.fasta
+    feature_data_dir: example/predicted_features
+    output_dir: outputs/predict/features
+
+  # Model prediction
+  prediction:
+    model: SMOD_star_model.joblib
+    output: outputs/predict/predictions.csv
+    save_calculated_features: true

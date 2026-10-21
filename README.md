@@ -2,42 +2,52 @@
 
 MSCintel is a sequence-based computational framework for investigating sequence-derived features associated with mechanosensitivity and identifying mechanosensitive ion channels (MSCs).
 
-This repository provides two primary workflows:
+This repository provides two main modules:
 
-1. **Feature selection and model construction**: calculate sequence-derived features, identify features associated with mechanosensitive ion channel function, train a Stacking classification model, and evaluate model performance.
-2. **Protein prediction**: predict whether new protein sequences are likely to be mechanosensitive ion channels using either the interpretable SMOD_star model or the complementary ESM2-LR model.
+1. **Model development**: A flexible and extensible pipeline for feature selection, classification model construction, and performance evaluation. It supports user-provided features and is not limited to MSC classification.
+2. **MSC classification**: Identify potential mechanosensitive ion channels from protein sequences using two complementary methods: SMOD_star, an interpretable classification model based on selected sequence-derived features, and ESM2-LR, which combines ESM2 protein sequence embeddings with Logistic Regression.
 
 ## Main Modules
 
-| Module        | Purpose                                                                                                                                         | Documentation                                  |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `SMOD_star/`  | Calculate sequence-derived features, perform feature selection, train the Stacking model, and evaluate model performance.                       | [`SMOD_star/README.md`](MSCintel/SMOD_star/README.md)   |
-| `prediction/` | Apply the trained prediction models to new protein sequences. This module includes SMOD_star and ESM2-LR as two complementary prediction tools. | [`prediction/README.md`](MSCintel/prediction/README.md) |
+| Module | Purpose | Documentation |
+|---|---|---|
+| `model_development/` | Perform statistical feature screening, wrapper-based feature selection, Stacking classifier construction, and model evaluation. | [`model_development/README.md`](model_development/README.md) |
+| `MSC_classification/` | Predict whether protein sequences are mechanosensitive ion channels using SMOD_star or ESM2-LR. | [`SMOD_star/README.md`](MSC_classification/SMOD_star/README.md), [`ESM2-LR/README.md`](MSC_classification/ESM2-LR/README.md) |
 
-SMOD_star is the interpretable prediction model implemented within the MSCintel framework. ESM2-LR is provided as a complementary tool for applications that prioritize classification accuracy over mechanistic interpretability.
 
-## Environment Setup
+## System Requirements
 
-The workflows in this repository were tested with Python 3.8 in a conda environment. The required dependencies are listed in `environment.yml`.
+- **Operating systems tested:** CentOS Linux 7 and Windows 11 (25H2).
+- **Python:** 3.8.
+- **Environment management:** Conda.
+- **Dependencies:** See [`environment.yml`](environment.yml).
+- **Hardware:** GPU is optional, but recommended for accelerating ESM2 embedding generation and model training.
 
-From the repository root, create and activate the environment with:
+
+## Installation
+
+Clone the repository and create the Conda environment:
 
 ```bash
+git clone https://github.com/ChunyaoXin/MSCintel.git
+cd MSCintel
+
 conda env create -f environment.yml
 conda activate mscintel
 ```
 
 Run all subsequent commands after activating this environment.
 
-## External Prediction Requirements
 
-The SMOD_star feature-selection and prediction workflows use external per-residue prediction results, including conservation profiles, disorder predictions, linker predictions, and secondary-structure predictions. These results must be generated using the corresponding external tools before running the relevant SMOD_star workflow.
+## Installation and Demo Runtime
 
-The external prediction framework is extensible. Users may remove existing external prediction types or incorporate additional prediction sources according to their analysis requirements. When introducing a new externally derived feature, the corresponding prediction results must first be generated using the appropriate prediction tool and converted into the standardized input format required by the pipeline.
+The software was tested on a Linux server with a CUDA-enabled GPU and a Windows desktop computer without a CUDA-enabled GPU.
 
-Detailed file formats, directory structures, and configuration instructions are provided in the corresponding module README files.
+| Task | Linux Server (GPU) | Windows Desktop (CPU) |
+|---|---|---|
+| Environment installation | 12 min | 5 min |
+| Model development demo | 13 min | 25 min |
+| SMOD_star prediction demo | 15 s | 15 s |
+| ESM2-LR prediction demo | 20 s | 50 s |
 
-When using an existing trained SMOD_star model for prediction, all feature types required by that model must be provided. Any modification to the feature system requires retraining the model.
-
-ESM2-LR can either generate ESM2 sequence embeddings from the input FASTA file or load previously generated embeddings.
-
+Runtime measurements were obtained using the provided example datasets.

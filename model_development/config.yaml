@@ -1,0 +1,37 @@
+# Base directory used to resolve all relative paths.
+repo_root: .
+
+feature_selection:
+  # Feature directories.
+  train_features_dir: example/train
+  test_features_dir: example/test
+
+  # AAindex metadata used during correlation-based redundancy removal.
+  feature_value_file: feature_selection/feature_value.txt
+
+  # Feature-selection and model-output directories.
+  correlative_results_dir: outputs/correlative_results
+  significant_results_dir: outputs/significant_results
+  wrapper_features_dir: outputs/wrapper_features
+  stacking_output_dir: outputs/stacking_model
+  model_metrics_file: outputs/model_metrics.csv
+
+  # Whether to save outputs generated at each stage.
+  save_outputs:
+    merge_select_correlative_features: true
+    merge_select_significant_features: true
+    correlative_significant_features: true
+    wrapper_feature_selection: true
+    stacking_merge_model: true
+
+  # Statistical screening parameters.
+  p_value_threshold: 0.05
+  alpha: 0.05
+  pcc: 0.7
+
+  # Resampling and model-training parameters.
+  outer_iterations: 10
+  inter_iterations: 100
+  repeat_times: 0.7
+  cv_splits: 5
+  random_state: 42
