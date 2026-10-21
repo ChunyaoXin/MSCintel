@@ -17,7 +17,7 @@ This repository provides two main modules:
 
 ## System Requirements
 
-- **Operating systems tested:** CentOS Linux 7 and Windows 11 (25H2).
+- **Operating systems:** CentOS 7 and Windows 11.
 - **Python:** 3.8.
 - **Environment management:** Conda.
 - **Dependencies:** See [`environment.yml`](environment.yml).
@@ -41,13 +41,17 @@ Run all subsequent commands after activating this environment.
 
 ## Installation and Demo Runtime
 
-The software was tested on a Linux server with a CUDA-enabled GPU and a Windows desktop computer without a CUDA-enabled GPU.
+Approximate runtimes were measured on the following hardware:
+
+- **Linux server:** NVIDIA RTX A6000 GPU (48 GB), 52-core CPU.
+- **Windows desktop:** 8-core CPU (no CUDA-enabled GPU).
+
 
 | Task | Linux Server (GPU) | Windows Desktop (CPU) |
 |---|---|---|
-| Environment installation | 12 min | 5 min |
-| Model development demo | 13 min | 25 min |
-| SMOD_star prediction demo | 15 s | 15 s |
-| ESM2-LR prediction demo | 20 s | 50 s |
+| Environment installation | ~12 min | ~5 min |
+| Model development demo | ~13 min | ~25 min |
+| SMOD_star prediction demo | ~15 s | ~15 s |
+| ESM2-LR prediction demo | ~20 s | ~50 s |
 
-Runtime measurements were obtained using the provided example datasets.
+Runtimes are based on the provided example datasets and may vary with hardware and execution conditions.
